@@ -6,7 +6,17 @@ public class Screen {
 private int gameWidth;
 private int lineOne, lineTwo;
 private int boxSize;
-
+private final int boxWidth = 300;
+private final int boxPos1 = 100;
+private final int boxPos2 = 200;
+private final int boxPos3 = 300;
+private final int boxPos4 = 400;
+private final int boxPos5 = 500;
+private final int boxPos6 = 600;
+private final int boxPos7 = 700;
+private final int boxPos8 = 800;
+private final int boxPos9 = 900;
+private final int centerValue = 40;
 	
 	public Screen(){
 		gameWidth = Values.frameWidth.getValue();
@@ -19,56 +29,15 @@ private int boxSize;
 	 * Fills the main area with white. 
 	 * This could be used to erase all marks when new game is started.
 	 */
-	public void drawMain(Graphics g){
-		g.setColor(new Color(255, 255, 255));
-		g.fillRect(0, 0, Values.frameWidth.getValue(), Values.frameHeight.getValue());
-	}
+	
 	
 	
 	
 		
 	
-	/**
-	 * Draws the side bar on the screen. 
-	 * @param g
-	 */
-	public void drawBar(Graphics g){
-		g.setColor(Color.DARK_GRAY);
-		g.fillRect(gameWidth, 0, 300, gameWidth);
-		g.setColor(Color.WHITE);
-		g.setFont(new Font("Dialog", 0, 30));
-		//Adds the word score to label where score is.
-		g.drawString("Score", gameWidth + 150, 100);
-	}
-	/**
-	 * Puts a number on the score in the score place.
-	 * @param g Graphics
-	 * @param s  String value of number to pass in.
-	 */
-	public void putScore(Graphics g, String s){
-		//XXX Center this string.
-		g.setColor(Color.DARK_GRAY);
-		g.fillRect(gameWidth, 150, 300, 200);
-		g.setColor(Color.WHITE);
-		g.setFont(new Font("Dialog", 0, 30));
-		g.drawString(s, gameWidth + 150, 200);
-	}
-	/**
-	 * Adds a number to a place saved for score on the game bar.
-	 * @param g
-	 * @param num
-	 */
 	
-	public void putScore(Graphics g, int num){
-		//XXX Center This string.
-		String string;
-		string = String.valueOf(num);
-		g.setColor(Color.DARK_GRAY);
-		g.fillRect(gameWidth, 150, 300, 100);
-		g.setColor(Color.WHITE);
-		g.setFont(new Font("Dialog", 0, 30));
-		g.drawString(string, gameWidth, 200);
-	}
+	
+	
 	/**
 	 * Draws the grid that will be played on.
 	 * @param g
@@ -87,6 +56,8 @@ private int boxSize;
 
 		g.drawRect(x, y, 300, 300);
 	}
+	
+	
 	
 	
 }

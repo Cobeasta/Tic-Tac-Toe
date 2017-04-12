@@ -2,8 +2,8 @@
 public class AI {
 	
 	
-	
 	public AI(){
+
 		
 	}
 	
@@ -12,7 +12,11 @@ public class AI {
 	 * possible.
 	 */
 	public void move(){
-		
+		if (ICanWin() == true);
+		if(oppCanWin() == true);
+		if(oppCanFork() == true);
+		if(firstMove() == true);
+		if(secondMove() == true) goMiddle();
 	}
 	
 	
@@ -38,9 +42,16 @@ public class AI {
 		
 	}
 	public boolean secondMove(){
-		//TODO Add second move code.
-		return false;
+		return true;
 		
+	}
+	public void goCorner(){
+		
+	}
+	public void moveSide(){
+		
+	}
+	public void goMiddle(){
 	}
 	
 	
