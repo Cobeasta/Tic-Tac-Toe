@@ -4,7 +4,7 @@ import java.awt.Graphics;
 public class Piece {
 	int xPos;
 	int yPos;
-	public int team;
+	public ENUM status;
 	
 	Color red = Color.RED;
 	Color blue = Color.BLUE;
@@ -14,18 +14,25 @@ public class Piece {
 	 * @param y yposition nof this.
 	 * @param player number representing team piece  is for.
 	 */
-	public Piece(int x, int y, int player){
-		
+	public Piece(int x, int y){
+		status = ENUM.NOT_TAKEN;
+
 		xPos = x;
 		yPos = y;
-		team = player;
+		
 		
 	}
-	public void setTeam(int team){
-		this.team = team;
+	public void setTeam(ENUM team){
+		if(team == ENUM.RED){
+			status = ENUM.RED;
+		}
+		else if(team == ENUM.BLUE){
+			status = ENUM.BLUE;
+		}
+		
 	}
 	public int getTeam(){
-		return team;
+		return status.getValue();
 	}
 	public int getxPos() {
 		return xPos;
@@ -35,19 +42,51 @@ public class Piece {
 	}
 	public void draw(Graphics g){
 		
-		if(team == 1) {
+		if(status == ENUM.BLUE) {
 			g.setColor(blue);
 			g.fillRect(xPos, yPos, 300, 300);
 
 		}
-		if(team == 2){
+		if(status == ENUM.RED){
 			g.setColor(red);
 			g.fillRect(xPos, yPos, 300, 300);
 
 		}
+		
 		else{
 			
 		}
 	}
+	public enum ENUM{
+		RED(2){
+
+			@Override
+			public int getValue() {
+				return 0;
+			}
+			
+		}, NOT_TAKEN(0){
+
+			@Override
+			public int getValue() {
+				return 0;
+			}
+			
+		}, BLUE(1){
+
+			@Override
+			public int getValue() {
+				return 1;
+			}
+			
+		};
+		
+		private ENUM(int m){
+			
+			
+		}
+		public abstract int getValue();
+	}
+	
 	
 }

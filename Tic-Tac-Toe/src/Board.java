@@ -4,7 +4,6 @@ import java.awt.Graphics;
 
 public class Board {
 	int gameWidth, lineOne, lineTwo;
-	public int turn;
 	private int boxSize;
 	private final int boxWidth = 300;
 	private final int boxPos1 = 100;
@@ -18,7 +17,9 @@ public class Board {
 	private final int boxPos9 = 900;
 	private final int centerValue = 40;	
 	Piece[][] board;
+	int turn;
 	public Board(){
+		turn = 1;
 		board = new Piece[3][3];
 		
 		
@@ -36,10 +37,11 @@ public class Board {
 	 * Clears the board and initializes the values for the array.
 	 */
 	public void init(){
+		int placeX = 0; int placeY = 0;
+
 		for(int i = 0; i < 3; i++){
-			int placeX = 0; int placeY = 0;
 			for(int temp = 0; temp < 3; temp++){
-				board[i][temp] = new Piece(placeX, placeY, 0);
+				board[i][temp] = new Piece(placeX, placeY);
 				placeY += 300;
 			}
 			placeY = 0;
@@ -49,11 +51,16 @@ public class Board {
 	}
 	
 	
-	public void addPiece(int x, int y, int team){
-	 Piece p = board[x][y];
+	public void addPiece(int x, int y, Piece.ENUM team){
+		
+	
+	Piece p = board[x][y];
 	 p.setTeam(team);
+	 
 	
 	}
+	
+	
 	public void drawParts(Graphics g){
 		for(int i = 0; i < 3; i++){
 			for (int temp = 0; temp < 3; temp++){
@@ -78,6 +85,12 @@ public class Board {
 			s = "Computer's turn";
 		}
 		g.drawString(s, gameWidth + centerValue, boxPos5);
+	}
+	public int getTurn(){
+		return turn;
+	}
+	public void setTurn(int turn){
+		this.turn = turn;
 	}
 	
 	
