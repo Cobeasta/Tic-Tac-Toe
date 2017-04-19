@@ -23,13 +23,22 @@ public class Piece {
 		
 	}
 	public void setTeam(ENUM team){
+		if(status == ENUM.NOT_TAKEN){
 		if(team == ENUM.RED){
 			status = ENUM.RED;
 		}
 		else if(team == ENUM.BLUE){
 			status = ENUM.BLUE;
 		}
+		}
+		else{
+			GameLoop.canMove = false;
+			System.out.println("ERROR!:     Cannot Go there!");
+		}
 		
+	}
+	public ENUM getTeamEnum(){
+		return status;
 	}
 	public int getTeam(){
 		return status.getValue();
@@ -57,12 +66,14 @@ public class Piece {
 			
 		}
 	}
+	
+	
 	public enum ENUM{
 		RED(2){
 
 			@Override
 			public int getValue() {
-				return 0;
+				return 2;
 			}
 			
 		}, NOT_TAKEN(0){
